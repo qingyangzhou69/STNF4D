@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="NEF">
+  <meta name="keywords" content="NEF, NeRF, 3D parametric curve">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NEF: Neural Edge Fields for 3D Parametric Curve Reconstruction from Multi-view Images</title>
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">NEF: Neural Edge Fields for 3D Parametric Curve Reconstruction from Multi-view Images</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="">Yunfan Ye</a>,</span>
+            <span class="author-block">
+              <a href="https://renjiaoyi.github.io/">Renjiao Yi</a>,</span>
+            <span class="author-block">
+              <a href="">Zhirui Gao</a>,
+            </span>
+            <span class="author-block">
+              <a href="http://www.zhuchenyang.net/">Chenyang Zhu</a>,
+            </span>
+            <span class="author-block">
+              <a href="">Zhiping Cai</a>,
+            </span>
+            <span class="author-block">
+              <a href="http://kevinkaixu.net/">Kai Xu</a>,
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">National University of Defense Technology</span>
+
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2303.07653"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://openaccess.thecvf.com/content/CVPR2023/html/Ye_NEF_Neural_Edge_Fields_for_3D_Parametric_Curve_Reconstruction_From_CVPR_2023_paper.html"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+
+<!--              <span class="link-block">-->
+<!--                <a href=""-->
+<!--                   class="external-link button is-normal is-rounded is-dark">-->
+<!--                  <span class="icon">-->
+<!--                      <i class="ai ai-arxiv"></i>-->
+<!--                  </span>-->
+<!--                  <span>Supplement</span>-->
+<!--                </a>-->
+<!--              </span>-->
+
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://www.bilibili.com/video/BV1au411t723"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/yunfan1202/NEF_code"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+<!--              &lt;!&ndash; Dataset Link. &ndash;&gt;-->
+<!--              <span class="link-block">-->
+<!--                <a href="https://github.com/google/nerfies/releases/tag/0.1"-->
+<!--                   class="external-link button is-normal is-rounded is-dark">-->
+<!--                  <span class="icon">-->
+<!--                      <i class="far fa-images"></i>-->
+<!--                  </span>-->
+<!--                  <span>Data</span>-->
+<!--                  </a>-->
+<!--              </span>-->
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/teaser.mp4"
+                type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        NEF can reconstruct 3D parametric curves from calibrated multi-view images (edge maps).
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            We study the problem of reconstructing 3D feature curves of an object from a set of
+            calibrated multi-view images. To do so, we learn a neural implicit field representing
+            the density distribution of 3D edges which we refer to as <b>Neural Edge Field (NEF)</b>.
+            Inspired by NeRF, NEF is optimized with a view-based rendering loss where a 2D edge map is
+            rendered at a given view and is compared to the ground-truth edge map extracted from the
+            image of that view. The rendering-based differentiable optimization of NEF fully exploits 2D
+            edge detection, without needing a supervision of 3D edges, a 3D geometric operator or cross-view
+            edge correspondence. Several technical designs are devised to ensure learning a range-limited
+            and view-independent NEF for robust edge extraction. The final parametric 3D curves are extracted
+            from NEF with an iterative optimization method.
+            On our benchmark with synthetic data, we demonstrate that NEF outperforms existing
+            state-of-the-art methods on all metrics.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Pipeline. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Pipeline</h2>
+        <div class="pipeline">
+          <img src="./static/images/pipeline.png"
+                 class="pipeline image"
+                 alt="pipeline image"/>
+        </div>
+      </div>
+    </div>
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <div class="content has-text-justified">
+          <p>
+            We leverage 2D edge detection to directly acquire 3D edge points by learning a neural implicit field and further reconstructing
+            3D parametric curves that represent the geometrical shape of the object. We introduce several designs to train NEFs, and develop
+            a coarse-to-fine optimization strategy to reconstruct parametric curves. The whole pipeline is self-supervised with 2D images (edge maps).
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Pipeline. -->
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">More results</h2>
+      </div>
+    </div>
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <div class="content has-text-justified">
+          <p>
+            We show more reconstructed curves below. The videos shown are generated from the proposed ABC-NEF datasets.
+
+            The input contains 50 views (or less) of posed images <b>(a)</b>, and 2D edge maps <b>(b)</b> detected on them.
+            Based on the trained NEF, the re-rendered 2D edge maps <b>(c)</b> can recover occluded edges.
+            The 3D edge points <b>(d)</b> extracted from NEF are further applied to reconstruct 3D parametric curves <b>(e)</b>.
+          </p>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="content has-text-centered">
+          <video id="replay-video"
+                 controls
+                 muted
+                 preload
+                 playsinline
+                 width="80%">
+            <source src="./static/videos/NEF-project-page1.mp4"
+                    type="video/mp4">
+          </video>
+    </div>
+
+    <div class="content has-text-centered">
+          <video id="replay-video"
+                 controls
+                 muted
+                 preload
+                 playsinline
+                 width="80%">
+            <source src="./static/videos/NEF-project-page2.mp4"
+                    type="video/mp4">
+          </video>
+    </div>
+
+    <div class="content has-text-centered">
+          <video id="replay-video"
+                 controls
+                 muted
+                 preload
+                 playsinline
+                 width="80%">
+            <source src="./static/videos/NEF-project-page3.mp4"
+                    type="video/mp4">
+          </video>
+    </div>
+
+    <div class="content has-text-centered">
+          <video id="replay-video"
+                 controls
+                 muted
+                 preload
+                 playsinline
+                 width="80%">
+            <source src="./static/videos/NEF-project-page4.mp4"
+                    type="video/mp4">
+          </video>
+    </div>
+
+    <div class="content has-text-centered">
+          <video id="replay-video"
+                 controls
+                 muted
+                 preload
+                 playsinline
+                 width="80%">
+            <source src="./static/videos/NEF-project-page5.mp4"
+                    type="video/mp4">
+          </video>
+    </div>
+
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@InProceedings{Ye_2023_CVPR,
+    author    = {Ye, Yunfan and Yi, Renjiao and Gao, Zhirui and Zhu, Chenyang and Cai, Zhiping and Xu, Kai},
+    title     = {NEF: Neural Edge Fields for 3D Parametric Curve Reconstruction From Multi-View Images},
+    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+    month     = {June},
+    year      = {2023},
+    pages     = {8486-8495}
+}</code></pre>
+  </div>
+</section>
+
+
+</body>
+</html>
