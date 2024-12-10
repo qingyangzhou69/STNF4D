@@ -31,8 +31,8 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">NEF: Neural Edge Fields for 3D Parametric Curve Reconstruction from Multi-view Images</h1>
-          <div class="is-size-3 publication-authors">
+          <h1 class="title is-1 publication-title">Spatiotemporal-aware Neural Fields for Dynamic CT Reconstruction</h1>
+          <div class="is-size-5 publication-authors">
             <span class="author-block">
               <a href="">Qingyang Zhou</a>,
             <span class="author-block">
@@ -53,24 +53,16 @@
           <div class="column has-text-centered">
             <div class="publication-links">
               <!-- PDF Link. -->
-              <span class="link-block">
-                <a href="https://arxiv.org/abs/2303.07653"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fas fa-file-pdf"></i>
-                  </span>
-                  <span>arXiv</span>
-                </a>
-              </span>
+
 
               <!-- PDF Link. -->
               <span class="link-block">
-                <a href="https://openaccess.thecvf.com/content/CVPR2023/html/Ye_NEF_Neural_Edge_Fields_for_3D_Parametric_Curve_Reconstruction_From_CVPR_2023_paper.html"
+                <a href=""
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
                   </span>
-                  <span>Paper</span>
+                  <span>Paper(coming soon)</span>
                 </a>
               </span>
 
@@ -85,23 +77,15 @@
 <!--              </span>-->
 
               <!-- Video Link. -->
-              <span class="link-block">
-                <a href="https://www.bilibili.com/video/BV1au411t723"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-youtube"></i>
-                  </span>
-                  <span>Video</span>
-                </a>
-              </span>
+
               <!-- Code Link. -->
               <span class="link-block">
-                <a href="https://github.com/yunfan1202/NEF_code"
+                <a href=""
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
                   </span>
-                  <span>Code</span>
+                  <span>Code(comming soon)</span>
                   </a>
               </span>
 <!--              &lt;!&ndash; Dataset Link. &ndash;&gt;-->
@@ -131,7 +115,6 @@
                 type="video/mp4">
       </video>
       <h2 class="subtitle has-text-centered">
-        NEF can reconstruct 3D parametric curves from calibrated multi-view images (edge maps).
       </h2>
     </div>
   </div>
@@ -146,18 +129,18 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            We study the problem of reconstructing 3D feature curves of an object from a set of
-            calibrated multi-view images. To do so, we learn a neural implicit field representing
-            the density distribution of 3D edges which we refer to as <b>Neural Edge Field (NEF)</b>.
-            Inspired by NeRF, NEF is optimized with a view-based rendering loss where a 2D edge map is
-            rendered at a given view and is compared to the ground-truth edge map extracted from the
-            image of that view. The rendering-based differentiable optimization of NEF fully exploits 2D
-            edge detection, without needing a supervision of 3D edges, a 3D geometric operator or cross-view
-            edge correspondence. Several technical designs are devised to ensure learning a range-limited
-            and view-independent NEF for robust edge extraction. The final parametric 3D curves are extracted
-            from NEF with an iterative optimization method.
-            On our benchmark with synthetic data, we demonstrate that NEF outperforms existing
-            state-of-the-art methods on all metrics.
+            We propose a dynamic Computed Tomography (CT) reconstruction framework called
+            <b>STNF4D (SpatioTemporal-aware Neural Fields)</b>. First, we represent the 4D
+            scene using four orthogonal volumes and compress these volumes into more compact hash grids.
+            Compared to the plane decomposition method, this method enhances the model's capacity while keeping
+            the representation compact and efficient. However, in densely predicted high-resolution dynamic CT scenes,
+            the lack of constraints and hash conflicts in the hash grid features lead to obvious dot-like artifact and
+            blurring in the reconstructed images. To address these issues, we propose the Spatiotemporal Transformer
+            (ST-Former) that guides the model in selecting and optimizing features by sensing the spatiotemporal information
+            in different hash grids, significantly improving the quality of reconstructed images. We conducted experiments on
+            medical and industrial datasets covering various motion types, sampling modes, and reconstruction resolutions.
+            Experimental results show that our method outperforms the second-best by 5.99 dB and 4.27 dB in medical and industrial
+            scenes, respectively.
           </p>
         </div>
       </div>
@@ -180,9 +163,7 @@
       <div class="column is-four-fifths">
         <div class="content has-text-justified">
           <p>
-            We leverage 2D edge detection to directly acquire 3D edge points by learning a neural implicit field and further reconstructing
-            3D parametric curves that represent the geometrical shape of the object. We introduce several designs to train NEFs, and develop
-            a coarse-to-fine optimization strategy to reconstruct parametric curves. The whole pipeline is self-supervised with 2D images (edge maps).
+
           </p>
         </div>
       </div>
@@ -203,11 +184,7 @@
       <div class="column is-four-fifths">
         <div class="content has-text-justified">
           <p>
-            We show more reconstructed curves below. The videos shown are generated from the proposed ABC-NEF datasets.
-
-            The input contains 50 views (or less) of posed images <b>(a)</b>, and 2D edge maps <b>(b)</b> detected on them.
-            Based on the trained NEF, the re-rendered 2D edge maps <b>(c)</b> can recover occluded edges.
-            The 3D edge points <b>(d)</b> extracted from NEF are further applied to reconstruct 3D parametric curves <b>(e)</b>.
+            We present the sampling patterns and motion states of medical and industrial datasets, and show more experimental results.
           </p>
 
         </div>
@@ -250,29 +227,7 @@
           </video>
     </div>
 
-    <div class="content has-text-centered">
-          <video id="replay-video"
-                 controls
-                 muted
-                 preload
-                 playsinline
-                 width="80%">
-            <source src="./static/videos/NEF-project-page4.mp4"
-                    type="video/mp4">
-          </video>
-    </div>
 
-    <div class="content has-text-centered">
-          <video id="replay-video"
-                 controls
-                 muted
-                 preload
-                 playsinline
-                 width="80%">
-            <source src="./static/videos/NEF-project-page5.mp4"
-                    type="video/mp4">
-          </video>
-    </div>
 
   </div>
 </section>
@@ -281,13 +236,11 @@
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
-    <pre><code>@InProceedings{Ye_2023_CVPR,
-    author    = {Ye, Yunfan and Yi, Renjiao and Gao, Zhirui and Zhu, Chenyang and Cai, Zhiping and Xu, Kai},
-    title     = {NEF: Neural Edge Fields for 3D Parametric Curve Reconstruction From Multi-View Images},
-    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
-    month     = {June},
-    year      = {2023},
-    pages     = {8486-8495}
+    <pre><code>@InProceedings{Zhou_2025_AAAI,
+    author    = {Qingyang Zhou and Ye, Yunfan and Cai, Zhiping},
+    title     = {Spatiotemporal-aware Neural Fields for Dynamic CT Reconstruction},
+    booktitle = {Proceedings of the AAAI Conference on Artificial Intelligence},
+    year      = {2025}
 }</code></pre>
   </div>
 </section>
