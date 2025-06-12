@@ -1,7 +1,7 @@
 
 # Spatiotemporal-aware Neural Fields for Dynamic CT Reconstruction
 
-This is the repository that contains source code for the [NEF website](https://qingyangzhou69.github.io/STNF4D/).
+This is the repository that contains source code for the [STNF4D website](https://qingyangzhou69.github.io/STNF4D/).
 
 If you find it useful for your work please cite:
 ```
